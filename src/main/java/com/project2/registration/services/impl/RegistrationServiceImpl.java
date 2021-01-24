@@ -3,6 +3,7 @@ package com.project2.registration.services.impl;
 import com.project2.registration.entity.*;
 import com.project2.registration.repository.CorporateRepository;
 import com.project2.registration.repository.RegistrationRepository;
+import com.project2.registration.services.LoginHistoryService;
 import com.project2.registration.services.RegistrationService;
 import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     RegistrationRepository registrationRepository;
 
     @Autowired
+    LoginHistoryService loginHistoryService;
+
+    @Autowired
     CorporateRepository corporateRepository;
+
 
     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
     Pattern pattern = Pattern.compile(regex);
@@ -57,7 +62,7 @@ public class RegistrationServiceImpl implements RegistrationService {
                  {
                      userDTO.setUserId(userExist.getUserId());
                 }
-            }///userId,username,timestamp,channelId
+            }
             Users users = new Users();
             users.setName(userDTO.getName());
             users.setDateOfBirth(userDTO.getDateOfBirth());
@@ -74,8 +79,17 @@ public class RegistrationServiceImpl implements RegistrationService {
             users.setChannelId(userDTO.getChannelId());
             users.setEmail(userDTO.getEmail());
             users.setPassword(userDTO.getPassword());
+            users.setTimeStamp(java.time.LocalDateTime.now());
 
             registrationRepository.save(users);
+            LoginHistory loginHistory = new LoginHistory();
+            loginHistory.setUserId(users.getUserId());
+            loginHistory.setChannelId(users.getChannelId());
+            loginHistory.setUserName(users.getUsername());
+            loginHistory.setTimestamp(java.time.LocalDateTime.now());
+
+            loginHistoryService.save(loginHistory);
+
             userData.setProfileImage(users.getProfileImage());
             userData.setUserId(users.getUserId());
             userData.setUsername(users.getUsername());
@@ -98,6 +112,14 @@ public class RegistrationServiceImpl implements RegistrationService {
             userLoginData.setUserId(user.getUserId());
             userLoginData.setUsername(user.getUsername());
         }
+
+        LoginHistory loginHistory = new LoginHistory();
+        loginHistory.setUserId(user.getUserId());
+        loginHistory.setChannelId(user.getChannelId());
+        loginHistory.setUserName(user.getUsername());
+        loginHistory.setTimestamp(java.time.LocalDateTime.now());
+        loginHistoryService.save(loginHistory);
+
         return userLoginData;
 
     }

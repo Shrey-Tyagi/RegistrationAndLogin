@@ -5,6 +5,8 @@ import com.project2.registration.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value = "/user")
 @CrossOrigin
@@ -33,4 +35,5 @@ public class RegistrationController {
     UserData loginMaster(@PathVariable int channelId, @PathVariable String email, @PathVariable String password){
         return registrationService.loginMaster(channelId,email,password);
     }
+
 }

@@ -1,6 +1,7 @@
 package com.project2.registration.entity;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -23,7 +24,15 @@ public class Users {
     private String bio;
     private boolean master;
     private String notificationToken;
+    private LocalDateTime timeStamp;
 
+    public LocalDateTime getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(LocalDateTime timeStamp) {
+        this.timeStamp = timeStamp;
+    }
 
     public String getNotificationToken() {
         return notificationToken;
