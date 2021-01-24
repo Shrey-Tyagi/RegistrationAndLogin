@@ -7,5 +7,7 @@ public interface RegistrationService {
 
     UserData findByChannelIdAndEmailAndPassword(int channelId,String email, String password);
 
-    Users updateData(String imgUrl);
+    UserDTO updateData(UserDTO userDTO);
+
+    UserData loginMaster(int channelId, String email, String password);
 }

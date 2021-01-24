@@ -87,8 +87,49 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-    public Users updateData(String imgUrl) {
-        return null;///To do waiting for token and oauth sorting
+    public UserDTO updateData(UserDTO userDTO) {
+        Users users = registrationRepository.findByChannelIdAndEmail(userDTO.getChannelId(),userDTO.getEmail());
+        ///To do waiting for token and oauth sorting
+        if(userDTO.getBio()!=null){
+            users.setBio(userDTO.getBio());
+        }
+        if(userDTO.getDateOfBirth()!=null){
+            users.setDateOfBirth((userDTO.getDateOfBirth()));
+        }
+        if(userDTO.getMobileNumber()!= 0){
+            users.setMobileNumber((userDTO.getMobileNumber()));
+        }
+        if(userDTO.getName()!=null){
+            users.setName((userDTO.getName()));
+        }
+        if(userDTO.getUsername()!=null){
+            users.setUsername((userDTO.getUsername()));
+        }
+        registrationRepository.save(users);
+        return userDTO;
+
+
+    }
+
+    @Override
+    public UserData loginMaster(int channelId, String email, String password) {
+        Users user = registrationRepository.findByChannelIdAndEmailAndPassword(channelId, email, password);
+        UserData userLoginData = new UserData();
+        if (user.isMaster()) {
+            if (user == null) {
+                userLoginData.setProfileImage("-1");
+                userLoginData.setUserId("-1");
+                userLoginData.setUsername("-1");
+                userLoginData.setUserToken("-1");
+            } else {
+                userLoginData.setProfileImage(user.getProfileImage());
+                userLoginData.setUserId(user.getUserId());
+                userLoginData.setUsername(user.getUsername());
+                userLoginData.setUserToken(user.getUserToken());
+            }
+        }
+            return userLoginData;
+
     }
 
     public String randomStringGenerator() {

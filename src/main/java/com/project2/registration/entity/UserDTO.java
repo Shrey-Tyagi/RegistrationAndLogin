@@ -1,11 +1,9 @@
 package com.project2.registration.entity;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 
-@Entity
-@Table(name = "users")
-@IdClass(CompositeKey.class)
-public class Users {
+public class UserDTO {
+
     @Id
     private String userId;
     @Id
@@ -13,11 +11,10 @@ public class Users {
     private String name;
     private String username;
     private String email;
-    private String password;
     private String dateOfBirth;
     private long mobileNumber;
     private String profileImage;
-    private boolean type;
+    private boolean type; //public:false private:true
     private boolean corporateEntity;
     private String areaOfInterests;
     private String bio;
@@ -25,30 +22,20 @@ public class Users {
     private String userToken;
     private String notificationToken;
 
-
-
-    public String getNotificationToken() {
-        return notificationToken;
-    }
-
-    public void setNotificationToken(String notificationToken) {
-        this.notificationToken = notificationToken;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getUserId() {
         return userId;
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public int getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(int channelId) {
+        this.channelId = channelId;
     }
 
     public String getName() {
@@ -59,20 +46,20 @@ public class Users {
         this.name = name;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getDateOfBirth() {
@@ -115,14 +102,6 @@ public class Users {
         this.corporateEntity = corporateEntity;
     }
 
-    public int getChannelId() {
-        return channelId;
-    }
-
-    public void setChannelId(int channelId) {
-        this.channelId = channelId;
-    }
-
     public String getAreaOfInterests() {
         return areaOfInterests;
     }
@@ -153,5 +132,13 @@ public class Users {
 
     public void setUserToken(String userToken) {
         this.userToken = userToken;
+    }
+
+    public String getNotificationToken() {
+        return notificationToken;
+    }
+
+    public void setNotificationToken(String notificationToken) {
+        this.notificationToken = notificationToken;
     }
 }

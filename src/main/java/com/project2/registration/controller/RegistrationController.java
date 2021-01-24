@@ -24,9 +24,13 @@ public class RegistrationController {
         return registrationService.findByChannelIdAndEmailAndPassword(channelId,email,password);
     }
 
-    @PostMapping("update/{urlImg}")
-    Users updateData(@PathVariable String imgUrl){
-        return registrationService.updateData(imgUrl);
+    @PostMapping("update")
+    UserDTO updateData(@RequestBody UserDTO userDTO){
+        return registrationService.updateData(userDTO);
     }
 
+    @GetMapping("login/master/{channelId}/{email}/{password}")
+    UserData loginMaster(@PathVariable int channelId, @PathVariable String email, @PathVariable String password){
+        return registrationService.loginMaster(channelId,email,password);
+    }
 }
