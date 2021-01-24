@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "corporate")
+@RequestMapping(value = "/corporate")
 @CrossOrigin
 public class CorporateController {
 
@@ -18,7 +18,7 @@ public class CorporateController {
     }
 
     @GetMapping("data/{channelId}/{pageId}")
-    Corporate showCorporateData(@PathVariable int channelId , @PathVariable String pageId, @PathVariable String role){
+    Corporate showCorporateData(@PathVariable int channelId , @PathVariable String pageId, @PathVariable int role){
         return corporateService.findByChannelIdAndPageIdAndRole(channelId,pageId,role);
     }
 

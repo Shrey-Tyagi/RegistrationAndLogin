@@ -22,7 +22,6 @@ public class Users {
     private String areaOfInterests;
     private String bio;
     private boolean master;
-    private String userToken;
     private String notificationToken;
 
 
@@ -147,11 +146,4 @@ public class Users {
         this.master = master;
     }
 
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
-    }
 }

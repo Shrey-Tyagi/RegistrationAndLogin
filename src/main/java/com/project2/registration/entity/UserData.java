@@ -6,7 +6,6 @@ public class UserData {
     private String userId;
     private String username;
     private String profileImage;
-    private String userToken;
     private int code;
 
     public int getCode() {
@@ -41,11 +40,4 @@ public class UserData {
         this.profileImage = profileImage;
     }
 
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
-    }
 }

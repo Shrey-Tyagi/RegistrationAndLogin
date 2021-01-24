@@ -19,7 +19,6 @@ public class UserDTO {
     private String areaOfInterests;
     private String bio;
     private boolean master;
-    private String userToken;
     private String notificationToken;
 
     public String getUserId() {
@@ -126,13 +125,6 @@ public class UserDTO {
         this.master = master;
     }
 
-    public String getUserToken() {
-        return userToken;
-    }
-
-    public void setUserToken(String userToken) {
-        this.userToken = userToken;
-    }
 
     public String getNotificationToken() {
         return notificationToken;

@@ -33,7 +33,7 @@ public class RegistrationServiceImpl implements RegistrationService {
         userData.setProfileImage("-1");
         userData.setUserId("-1");
         userData.setUsername("-1");
-        userData.setUserToken("-1");
+
 
         if(!(checkEmailExist == null)) {
             userData.setCode(100);
@@ -60,7 +60,6 @@ public class RegistrationServiceImpl implements RegistrationService {
             userData.setProfileImage(users.getProfileImage());
             userData.setUserId(users.getUserId());
             userData.setUsername(users.getUsername());
-            userData.setUserToken(users.getUserToken());
             return userData;
         }
     }
@@ -74,13 +73,11 @@ public class RegistrationServiceImpl implements RegistrationService {
             userLoginData.setProfileImage("-1");
             userLoginData.setUserId("-1");
             userLoginData.setUsername("-1");
-            userLoginData.setUserToken("-1");
         }
         else{
             userLoginData.setProfileImage(user.getProfileImage());
             userLoginData.setUserId(user.getUserId());
             userLoginData.setUsername(user.getUsername());
-            userLoginData.setUserToken(user.getUserToken());
         }
         return userLoginData;
 
@@ -120,12 +117,10 @@ public class RegistrationServiceImpl implements RegistrationService {
                 userLoginData.setProfileImage("-1");
                 userLoginData.setUserId("-1");
                 userLoginData.setUsername("-1");
-                userLoginData.setUserToken("-1");
             } else {
                 userLoginData.setProfileImage(user.getProfileImage());
                 userLoginData.setUserId(user.getUserId());
                 userLoginData.setUsername(user.getUsername());
-                userLoginData.setUserToken(user.getUserToken());
             }
         }
             return userLoginData;

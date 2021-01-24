@@ -12,7 +12,7 @@ public class Corporate {
     @Id
     private String pageId;
     private String userIds;
-    private String role;
+    private int role;
     //0 user 1 moderator 2 owner
 
     public int getChannelId() {
@@ -39,11 +39,11 @@ public class Corporate {
         this.userIds = userIds;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 }

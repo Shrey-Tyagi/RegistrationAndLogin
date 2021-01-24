@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CorporateRepository extends CrudRepository<Corporate, String> {
 
-    Corporate findByChannelIdAndPageIdAndRole(int channelId, String pageId, String role);
+    Corporate findByChannelIdAndPageIdAndRole(int channelId, String pageId, int role);
 }

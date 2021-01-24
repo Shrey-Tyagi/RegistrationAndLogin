@@ -19,7 +19,7 @@ public class CorporateServiceImpl implements CorporateService {
     }
 
     @Override
-    public Corporate findByChannelIdAndPageIdAndRole(int channelId, String pageId, String role) {
+    public Corporate findByChannelIdAndPageIdAndRole(int channelId, String pageId, int role) {
         return corporateRepository.findByChannelIdAndPageIdAndRole(channelId,pageId,role);
     }
 
