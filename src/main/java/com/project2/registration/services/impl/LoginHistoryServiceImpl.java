@@ -46,6 +46,7 @@ public class LoginHistoryServiceImpl implements LoginHistoryService {
             registrationHistory.setUserName(users.getUsername());
             registrationHistory.setChannelId(users.getChannelId());
             registrationHistory.setTimestamp(users.getTimeStamp());
+            registrationHistory.setEmail(users.getEmail());
             registrationHistoryList.add(registrationHistory);
         }
         return registrationHistoryList;

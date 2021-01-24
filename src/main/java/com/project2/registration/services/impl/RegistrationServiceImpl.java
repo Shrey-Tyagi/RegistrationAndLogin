@@ -5,12 +5,10 @@ import com.project2.registration.repository.CorporateRepository;
 import com.project2.registration.repository.RegistrationRepository;
 import com.project2.registration.services.LoginHistoryService;
 import com.project2.registration.services.RegistrationService;
-import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
@@ -179,5 +177,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 //                .toString();
         String generatedString= UUID.randomUUID().toString();
         return generatedString;
+    }
+
+    @Override
+    public Users findByChannelIdAndEmail(int channelId, String email) {
+        return registrationRepository.findByChannelIdAndEmail(channelId, email);
+    }
+
+    @Override
+    public Users saveUser(Users userFinal) {
+        return registrationRepository.save(userFinal);
     }
 }

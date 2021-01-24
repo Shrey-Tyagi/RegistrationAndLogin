@@ -10,4 +10,9 @@ public interface RegistrationService {
     UserDTO updateData(UserDTO userDTO);
 
     UserData loginMaster(int channelId, String email, String password);
+
+    Users findByChannelIdAndEmail(int channelId, String email);
+
+    Users saveUser(Users userFinal);
+
 }
