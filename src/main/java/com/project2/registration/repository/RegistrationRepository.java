@@ -1,7 +1,5 @@
 package com.project2.registration.repository;
 
-import com.project2.registration.entity.OwnersCorporate;
-import com.project2.registration.entity.UserData;
 import com.project2.registration.entity.Users;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

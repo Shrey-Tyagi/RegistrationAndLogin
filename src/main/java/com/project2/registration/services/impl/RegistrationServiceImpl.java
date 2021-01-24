@@ -1,29 +1,23 @@
 package com.project2.registration.services.impl;
 
 import com.project2.registration.entity.*;
-import com.project2.registration.repository.ModeratorsCorporateRepository;
-import com.project2.registration.repository.OwnerCorporateRepository;
+import com.project2.registration.repository.CorporateRepository;
 import com.project2.registration.repository.RegistrationRepository;
-import com.project2.registration.repository.UsersCorporateRepository;
 import com.project2.registration.services.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
     @Autowired
     RegistrationRepository registrationRepository;
+
     @Autowired
-    OwnerCorporateRepository ownerCorporateRepository;
-    @Autowired
-    UsersCorporateRepository usersCorporateRepository;
-    @Autowired
-    ModeratorsCorporateRepository moderatorsCorporateRepository;
+    CorporateRepository corporateRepository;
 
     String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
     Pattern pattern = Pattern.compile(regex);
@@ -96,74 +90,6 @@ public class RegistrationServiceImpl implements RegistrationService {
     public Users updateData(String imgUrl) {
         return null;///To do waiting for token and oauth sorting
     }
-
-    @Override
-    public OwnersCorporate addOwnerData(OwnersCorporate ownersCorporate) {
-        return ownerCorporateRepository.save(ownersCorporate);
-    }
-
-    @Override
-    public UsersCorporate addUsersData(UsersCorporate usersCorporate) {
-        return usersCorporateRepository.save(usersCorporate);
-    }
-
-    @Override
-    public ModeratorsCorporate addModeratorsData(ModeratorsCorporate moderatorsCorporate) {
-        return moderatorsCorporateRepository.save(moderatorsCorporate);
-    }
-
-    @Override
-    public OwnersCorporate findByChannelIdAndUserIdOwner(int channelId, String userId) {
-        return ownerCorporateRepository.findByChannelIdAndUserId(channelId,userId);
-    }
-
-    @Override
-    public ModeratorsCorporate findByChannelIdAndUserIdModerator(int channelId, String userId) {
-        return moderatorsCorporateRepository.findByChannelIdAndUserId(channelId,userId);
-    }
-
-    @Override
-    public UsersCorporate findByChannelIdAndUserIdUsers(int channelId, String userId) {
-        return usersCorporateRepository.findByChannelIdAndUserId(channelId,userId);
-    }
-
-    @Override
-    public UsersCorporate updateUserData(UsersCorporate usersCorporate) {
-        UsersCorporate usersCorporateData = usersCorporateRepository.findByChannelIdAndUserId(usersCorporate.getChannelId(),usersCorporate.getUserId());
-        if(usersCorporateData == null){
-            return usersCorporateRepository.save(usersCorporate);
-        }
-        else{
-            usersCorporate.setUsersId(usersCorporateData.getUsersId()+','+ usersCorporate.getUsersId());
-            return usersCorporateRepository.save(usersCorporate);
-        }
-
-    }
-
-    @Override
-    public ModeratorsCorporate updateModeratorsData(ModeratorsCorporate moderatorsCorporate) {
-        ModeratorsCorporate moderatorsCorporateData = moderatorsCorporateRepository.findByChannelIdAndUserId(moderatorsCorporate.getChannelId(),moderatorsCorporate.getUserId());
-        if(moderatorsCorporateData == null){
-            return moderatorsCorporateRepository.save(moderatorsCorporate);
-        }
-        else{
-            moderatorsCorporate.setModeratorId(moderatorsCorporateData.getModeratorId()+','+ moderatorsCorporate.getModeratorId());
-            return moderatorsCorporateRepository.save(moderatorsCorporate);
-        }
-    }
-
-    @Override
-    public OwnersCorporate updateOwnerData(OwnersCorporate ownersCorporate) {
-        OwnersCorporate ownersCorporateData = ownerCorporateRepository.findByChannelIdAndUserId(ownersCorporate.getChannelId(),ownersCorporate.getUserId());
-        if(ownersCorporateData == null){
-            return ownerCorporateRepository.save(ownersCorporate);
-        }
-        else{
-            ownersCorporate.setOwnerId(ownersCorporateData.getOwnerId()+','+ ownersCorporate.getOwnerId());
-            return ownerCorporateRepository.save(ownersCorporate);
-        }
-    }
-
 
     public String randomStringGenerator() {
         int leftLimit = 48; // numeral '0'

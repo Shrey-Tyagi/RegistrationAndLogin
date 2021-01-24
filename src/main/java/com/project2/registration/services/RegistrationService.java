@@ -8,22 +8,4 @@ public interface RegistrationService {
     UserData findByChannelIdAndEmailAndPassword(int channelId,String email, String password);
 
     Users updateData(String imgUrl);
-
-    OwnersCorporate addOwnerData(OwnersCorporate ownersCorporate);
-
-    UsersCorporate addUsersData(UsersCorporate usersCorporate);
-
-    ModeratorsCorporate addModeratorsData(ModeratorsCorporate moderatorsCorporate);
-
-    OwnersCorporate findByChannelIdAndUserIdOwner(int channelId, String userId);
-
-    ModeratorsCorporate findByChannelIdAndUserIdModerator(int channelId, String userId);
-
-    UsersCorporate findByChannelIdAndUserIdUsers(int channelId, String userId);
-
-    UsersCorporate updateUserData(UsersCorporate usersCorporate);
-
-    ModeratorsCorporate updateModeratorsData(ModeratorsCorporate moderatorsCorporate);
-
-    OwnersCorporate updateOwnerData(OwnersCorporate ownersCorporate);
 }
