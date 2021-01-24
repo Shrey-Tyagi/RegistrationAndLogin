@@ -25,7 +25,6 @@ public class Users {
     private String notificationToken;
 
 
-
     public String getNotificationToken() {
         return notificationToken;
     }

@@ -23,11 +23,11 @@ public class RegistrationServiceImpl implements RegistrationService {
     Pattern pattern = Pattern.compile(regex);
 
     @Override
-    public UserData addUser(Users users) {
-        List<Users> userExistList =  registrationRepository.findByEmail(users.getEmail());
+    public UserData addUser(UserDTO userDTO) {
+        List<Users> userExistList =  registrationRepository.findByEmail(userDTO.getEmail());
 
-        Users  checkEmailExist =  registrationRepository.findByChannelIdAndEmail(users.getChannelId(),users.getEmail());
-        Users  checkUsernameExist = registrationRepository.findByChannelIdAndUsername(users.getChannelId(),users.getUsername());
+        Users  checkEmailExist =  registrationRepository.findByChannelIdAndEmail(userDTO.getChannelId(),userDTO.getEmail());
+        Users  checkUsernameExist = registrationRepository.findByChannelIdAndUsername(userDTO.getChannelId(),userDTO.getUsername());
 
         UserData userData = new UserData();
         userData.setProfileImage("-1");
@@ -41,21 +41,38 @@ public class RegistrationServiceImpl implements RegistrationService {
         }else if (!(checkUsernameExist == null)){
             userData.setCode(101);
             return userData;
-        }else if(users.getPassword() == null){
+        }else if(userDTO.getPassword() == null){
             userData.setCode(102);
             return userData;
-        }else if(!(pattern.matcher(users.getEmail()).matches())){
+        }else if(!(pattern.matcher(userDTO.getEmail()).matches())){
             userData.setCode(103);
             return userData;
         }else {
             if(userExistList.size() == 0){
-                users.setUserId(randomStringGenerator());
+                userDTO.setUserId(randomStringGenerator());
             }else {
                 Users userExist = userExistList.get(0);
                  {
-                    users.setUserId(userExist.getUserId());
+                     userDTO.setUserId(userExist.getUserId());
                 }
-            }
+            }///userId,username,timestamp,channelId
+            Users users = new Users();
+            users.setName(userDTO.getName());
+            users.setDateOfBirth(userDTO.getDateOfBirth());
+            users.setBio(userDTO.getBio());
+            users.setUserId(userDTO.getUserId());
+            users.setMobileNumber(userDTO.getMobileNumber());
+            users.setUsername(userDTO.getUsername());
+            users.setAreaOfInterests(userDTO.getAreaOfInterests());
+            users.setProfileImage(userDTO.getProfileImage());
+            users.setCorporateEntity(userDTO.isCorporateEntity());
+            users.setMaster(userDTO.isMaster());
+            users.setType(userDTO.isType());
+            users.setNotificationToken(userDTO.getNotificationToken());
+            users.setChannelId(userDTO.getChannelId());
+            users.setEmail(userDTO.getEmail());
+            users.setPassword(userDTO.getPassword());
+
             registrationRepository.save(users);
             userData.setProfileImage(users.getProfileImage());
             userData.setUserId(users.getUserId());

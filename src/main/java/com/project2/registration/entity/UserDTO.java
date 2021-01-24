@@ -13,6 +13,7 @@ public class UserDTO {
     private String email;
     private String dateOfBirth;
     private long mobileNumber;
+    private String password;
     private String profileImage;
     private boolean type; //public:false private:true
     private boolean corporateEntity;
@@ -20,6 +21,15 @@ public class UserDTO {
     private String bio;
     private boolean master;
     private String notificationToken;
+
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getUserId() {
         return userId;

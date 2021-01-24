@@ -11,7 +11,7 @@ public class Corporate {
     private int channelId;
     @Id
     private String pageId;
-    private String userIds;
+    private String userId;
     private int role;
     //0 user 1 moderator 2 owner
 
@@ -32,11 +32,11 @@ public class Corporate {
     }
 
     public String getUserIds() {
-        return userIds;
+        return userId;
     }
 
     public void setUserIds(String userIds) {
-        this.userIds = userIds;
+        this.userId = userIds;
     }
 
     public int getRole() {

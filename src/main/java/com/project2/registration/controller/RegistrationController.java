@@ -15,8 +15,8 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping("save")
-    UserData addUser(@RequestBody Users users){
-        return registrationService.addUser(users);
+    UserData addUser(@RequestBody UserDTO userDTO){
+        return registrationService.addUser(userDTO);
     }
 
     @GetMapping("login/{channelId}/{email}/{password}")
