@@ -12,12 +12,12 @@ public class CorporateController {
     @Autowired
     CorporateService corporateService;
 
-    @PostMapping("")
+    @PostMapping("save")
     Corporate addCorporateData(@RequestBody Corporate corporate){
         return corporateService.addCorporateData(corporate);
     }
 
-    @GetMapping("data/{channelId}/{pageId}")
+    @GetMapping("data/{channelId}/{pageId}/{role}")
     Corporate showCorporateData(@PathVariable int channelId , @PathVariable String pageId, @PathVariable int role){
         return corporateService.findByChannelIdAndPageIdAndRole(channelId,pageId,role);
     }
@@ -28,9 +28,11 @@ public class CorporateController {
 //    }
 
     @DeleteMapping("del/{channelId}/{pageId}/{userId}")
-    Corporate delCorporateData(@PathVariable int channelId, @PathVariable String pageId, @PathVariable int role){
-        return corporateService.deleteByChannelIdAndPageIdAndRole(channelId,pageId,role);
+    Corporate delCorporateData(@PathVariable int channelId, @PathVariable String pageId, @PathVariable int userId){
+        return corporateService.deleteByChannelIdAndPageIdAndUserId(channelId,pageId,userId);
     }
+
+
 
 
 }

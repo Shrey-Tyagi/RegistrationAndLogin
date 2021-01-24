@@ -4,11 +4,13 @@ import com.project2.registration.entity.*;
 import com.project2.registration.repository.CorporateRepository;
 import com.project2.registration.repository.RegistrationRepository;
 import com.project2.registration.services.RegistrationService;
+import org.hibernate.id.UUIDGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 import java.util.regex.Pattern;
 
 @Service
@@ -121,8 +123,6 @@ public class RegistrationServiceImpl implements RegistrationService {
         }
         registrationRepository.save(users);
         return userDTO;
-
-
     }
 
     @Override
@@ -145,17 +145,17 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     public String randomStringGenerator() {
-        int leftLimit = 48; // numeral '0'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
-        Random random = new Random();
-
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
-                .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-
+//        int leftLimit = 48; // numeral '0'
+//        int rightLimit = 122; // letter 'z'
+//        int targetStringLength = 10;
+//        Random random = new Random();
+//
+//        String generatedString = random.ints(leftLimit, rightLimit + 1)
+//                .filter(i -> (i <= 57 || i >= 65) && (i <= 90 || i >= 97))
+//                .limit(targetStringLength)
+//                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+//                .toString();
+        String generatedString= UUID.randomUUID().toString();
         return generatedString;
     }
 }

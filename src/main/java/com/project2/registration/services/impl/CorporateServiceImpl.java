@@ -24,8 +24,8 @@ public class CorporateServiceImpl implements CorporateService {
     }
 
     @Override
-    public Corporate deleteByChannelIdAndPageIdAndRole(int channelId, String pageId, int role) {
-        return corporateRepository.deleteByChannelIdAndPageIdAndRole(channelId,pageId,role);
+    public Corporate deleteByChannelIdAndPageIdAndUserId(int channelId, String pageId, int role) {
+        return corporateRepository.deleteByChannelIdAndPageIdAndUserId(channelId,pageId,role);
     }
 
 //    @Override

@@ -9,5 +9,5 @@ public interface CorporateService {
 
 //    Corporate updateCorporateData(Corporate corporate);
 
-    Corporate deleteByChannelIdAndPageIdAndRole(int channelId, String pageId, int role);
+    Corporate deleteByChannelIdAndPageIdAndUserId(int channelId, String pageId, int userId);
 }
