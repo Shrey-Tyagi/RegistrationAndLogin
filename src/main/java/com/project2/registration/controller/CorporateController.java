@@ -22,11 +22,15 @@ public class CorporateController {
         return corporateService.findByChannelIdAndPageIdAndRole(channelId,pageId,role);
     }
 
-    @GetMapping("dataUpdate")
-    Corporate updateCorporateData(@RequestBody Corporate corporate){
-        return corporateService.updateCorporateData(corporate);
-    }
+//    @GetMapping("dataUpdate")
+//    Corporate updateCorporateData(@RequestBody Corporate corporate){
+//        return corporateService.updateCorporateData(corporate);
+//    }
 
+    @DeleteMapping("del/{channelId}/{pageId}/{userId}")
+    Corporate delCorporateData(@PathVariable int channelId, @PathVariable String pageId, @PathVariable int role){
+        return corporateService.deleteByChannelIdAndPageIdAndRole(channelId,pageId,role);
+    }
 
 
 }

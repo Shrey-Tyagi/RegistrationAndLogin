@@ -7,5 +7,7 @@ public interface CorporateService {
 
     Corporate findByChannelIdAndPageIdAndRole(int channelId, String pageId, int role);
 
-    Corporate updateCorporateData(Corporate corporate);
+//    Corporate updateCorporateData(Corporate corporate);
+
+    Corporate deleteByChannelIdAndPageIdAndRole(int channelId, String pageId, int role);
 }

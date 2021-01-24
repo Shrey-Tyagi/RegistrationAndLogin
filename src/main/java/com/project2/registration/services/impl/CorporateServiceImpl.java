@@ -24,14 +24,20 @@ public class CorporateServiceImpl implements CorporateService {
     }
 
     @Override
-    public Corporate updateCorporateData(Corporate corporate) {
-        Corporate corporateData = corporateRepository.findByChannelIdAndPageIdAndRole(corporate.getChannelId(),corporate.getPageId(),corporate.getRole());
-        if(corporateData == null){
-            return corporateRepository.save(corporate);
-        }
-        else{
-            corporate.setUserIds(corporateData.getUserIds()+','+corporate.getUserIds());
-            return corporateRepository.save(corporate);
-        }
+    public Corporate deleteByChannelIdAndPageIdAndRole(int channelId, String pageId, int role) {
+        return corporateRepository.deleteByChannelIdAndPageIdAndRole(channelId,pageId,role);
     }
+
+//    @Override
+//    public Corporate updateCorporateData(Corporate corporate) {
+//        Corporate corporateData = corporateRepository.findByChannelIdAndPageIdAndRole(corporate.getChannelId(),corporate.getPageId(),corporate.getRole());
+//        if(corporateData == null){
+//            return corporateRepository.save(corporate);
+//        }
+//        else{
+//            corporate.setUserIds(corporateData.getUserIds()+','+corporate.getUserIds());
+//            return corporateRepository.save(corporate);
+//        }
+//    }
+    //NEVER GONNA BE USED LOL
 }
